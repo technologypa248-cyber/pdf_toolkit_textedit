@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Forge – Online PDF Tools</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <span>PDF Forge</span>
+    </div>
+    <nav class="nav">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('merge_pdf') }}">Merge</a>
+      <a href="{{ url_for('split_pdf') }}">Split</a>
+      <a href="{{ url_for('img2pdf') }}">Image→PDF</a>
+      <a href="{{ url_for('edit_pages') }}">Page editor</a>
+      <a href="{{ url_for('text_editor_upload') }}">Text editor</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div style="display:flex; flex-wrap:wrap; gap:18px;">
+      <div style="flex:1 1 260px;">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>No login · Runs on your server</span>
+        </div>
+        <h1>Convert, trim and rewrite your PDFs.</h1>
+        <p>Merge, split, edit pages and even change the text of simple PDFs in a single place.</p>
+        <button class="btn-primary" onclick="window.location='{{ url_for('merge_pdf') }}'">Start with Merge</button>
+      </div>
+      <div style="flex:1 1 260px;">
+        <div class="grid">
+          <div class="card">
+            <h3>1. Upload</h3>
+            <p>Drop your PDF or images from any device.</p>
+          </div>
+          <div class="card">
+            <h3>2. Edit</h3>
+            <p>Combine, split, reorder pages or rewrite text.</p>
+          </div>
+          <div class="card">
+            <h3>3. Download</h3>
+            <p>Get a fresh, clean file ready to share.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top:22px;">
+    <h2 style="font-size:18px; margin-bottom:10px;">Tools</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Merge PDF</h3>
+        <p>Combine multiple PDFs into a single document.</p>
+        <a href="{{ url_for('merge_pdf') }}">Open merge tool →</a>
+      </div>
+      <div class="card">
+        <h3>Split PDF</h3>
+        <p>Keep only the pages you need from a bigger file.</p>
+        <a href="{{ url_for('split_pdf') }}">Open split tool →</a>
+      </div>
+      <div class="card">
+        <h3>Image to PDF</h3>
+        <p>Turn JPG / PNG images into a compact PDF.</p>
+        <a href="{{ url_for('img2pdf') }}">Open image converter →</a>
+      </div>
+      <div class="card">
+        <h3>Page editor</h3>
+        <p>Delete pages, reorder or rotate them in your PDF.</p>
+        <a href="{{ url_for('edit_pages') }}">Open page editor →</a>
+      </div>
+      <div class="card">
+        <h3>Text editor (simple)</h3>
+        <p>Extract all text, edit it in a big box and get a new PDF.</p>
+        <a href="{{ url_for('text_editor_upload') }}">Open text editor →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>PDF Forge · Built with Flask & PyPDF2 + ReportLab</footer>
+</div>
+</body>
+</html>

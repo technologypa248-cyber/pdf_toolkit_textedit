@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text editor – Edit text · PDF Forge</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <span>PDF Forge</span>
+    </div>
+  </header>
+  <div class="tool-page">
+    <h2>Edit text of your PDF</h2>
+    <p style="color:#9ca3af; font-size:13px;">Change any words you want. When you click “Create new PDF”, we’ll build a fresh document from this text.</p>
+
+    <form method="POST" action="{{ url_for('text_editor_apply') }}">
+      <input type="hidden" name="pdf_id" value="{{ pdf_id }}">
+      <label>Text content:</label>
+      <textarea name="updated_text">{{ text }}</textarea>
+      <button type="submit" class="btn-primary">Create new PDF</button>
+    </form>
+
+    <a href="{{ url_for('text_editor_upload') }}" class="back-link">← Start over with another PDF</a>
+  </div>
+  <footer>Text editor · PDF Forge</footer>
+</div>
+</body>
+</html>

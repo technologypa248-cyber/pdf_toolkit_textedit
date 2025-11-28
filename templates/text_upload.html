@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text editor – Upload PDF · PDF Forge</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <span>PDF Forge</span>
+    </div>
+  </header>
+  <div class="tool-page">
+    <h2>Edit PDF text (simple)</h2>
+    <p style="color:#9ca3af; font-size:13px;">We will extract all visible text from your PDF and show it in a big text box. Layout may change, but it’s easy to rewrite text.</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="flash">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+      <label>Upload a text-based PDF:</label>
+      <input type="file" name="pdf_file" accept="application/pdf">
+
+      <button type="submit" class="btn-primary">Extract text</button>
+    </form>
+
+    <a href="{{ url_for('home') }}" class="back-link">← Back to all tools</a>
+  </div>
+  <footer>Text editor · PDF Forge</footer>
+</div>
+</body>
+</html>

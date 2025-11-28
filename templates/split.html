@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Split PDF – PDF Forge</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <span>PDF Forge</span>
+    </div>
+  </header>
+  <div class="tool-page">
+    <h2>Split a PDF</h2>
+    <p style="color:#9ca3af; font-size:13px;">Type which pages you want to keep. We’ll create a new PDF.</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="flash">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+      <label>Upload PDF:</label>
+      <input type="file" name="pdf_file" accept="application/pdf">
+
+      <label>Pages (example: 1-3,5,7):</label>
+      <input type="text" name="pages" placeholder="1-3,5">
+
+      <button type="submit" class="btn-primary">Split now</button>
+    </form>
+
+    <a href="{{ url_for('home') }}" class="back-link">← Back to all tools</a>
+  </div>
+  <footer>Split tool · PDF Forge</footer>
+</div>
+</body>
+</html>

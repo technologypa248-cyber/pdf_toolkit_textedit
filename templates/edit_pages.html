@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page editor – PDF Forge</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <span>PDF Forge</span>
+    </div>
+  </header>
+  <div class="tool-page">
+    <h2>Edit PDF pages</h2>
+    <p style="color:#9ca3af; font-size:13px;">Delete, reorder or rotate pages in your PDF (does not change the page text).</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="flash">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+      <label>Upload PDF:</label>
+      <input type="file" name="pdf_file" accept="application/pdf">
+
+      <label>Pages to delete (optional):</label>
+      <input type="text" name="delete_pages" placeholder="2,5-7">
+
+      <label>New order (optional):</label>
+      <input type="text" name="new_order" placeholder="3,1,2">
+
+      <label>Rotate 90° right (optional):</label>
+      <input type="text" name="rotate_right" placeholder="1-2">
+
+      <label>Rotate 90° left (optional):</label>
+      <input type="text" name="rotate_left" placeholder="4">
+
+      <button type="submit" class="btn-primary">Apply changes</button>
+    </form>
+
+    <a href="{{ url_for('home') }}" class="back-link">← Back to all tools</a>
+  </div>
+  <footer>Page editor · PDF Forge</footer>
+</div>
+</body>
+</html>

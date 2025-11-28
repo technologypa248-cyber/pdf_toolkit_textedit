@@ -1,0 +1,5 @@
+Flask
+PyPDF2
+Pillow
+Werkzeug
+reportlab
